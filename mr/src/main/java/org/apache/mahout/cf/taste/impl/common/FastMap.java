@@ -246,7 +246,7 @@ public final class FastMap<K,V> implements Map<K,V>, Serializable, Cloneable {
       }
     }
     // Delete the entry
-    ((Object[])keys)[index] = REMOVED;
+    keys[index] = (K) REMOVED; // Removed object cast of keys[index]
     numEntries--;
     values[index] = null;
   }
@@ -267,7 +267,7 @@ public final class FastMap<K,V> implements Map<K,V>, Serializable, Cloneable {
     if (keys[index] == null) {
       return null;
     } else {
-      ((Object[])keys)[index] = REMOVED;
+      keys[index] = (K) REMOVED; // Removed object cast of keys[index]
       numEntries--;
       V oldValue = values[index];
       values[index] = null;
